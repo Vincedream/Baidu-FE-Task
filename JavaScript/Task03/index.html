@@ -1,0 +1,92 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript Task 01</title>
+  </head>
+<body>
+
+  <ul id="source">
+    <li>北京空气质量：<b>90</b></li>
+    <li>上海空气质量：<b>70</b></li>
+    <li>天津空气质量：<b>80</b></li>
+    <li>广州空气质量：<b>50</b></li>
+    <li>深圳空气质量：<b>40</b></li>
+    <li>福州空气质量：<b>32</b></li>
+    <li>成都空气质量：<b>90</b></li>
+  </ul>
+
+  <ul id="resort">
+    <!-- 
+    <li>第一名：北京空气质量：<b>90</b></li>
+    <li>第二名：北京空气质量：<b>90</b></li>
+    <li>第三名：北京空气质量：<b>90</b></li>
+     -->
+
+  </ul>
+
+  <button id="sort-btn" onclick="show(Data)">排序</button>
+
+<script type="text/javascript">
+
+/**
+ * getData方法
+ * 读取id为source的列表，获取其中城市名字及城市对应的空气质量
+ * 返回一个数组，格式见函数中示例
+ */
+function getData() {
+          var allLi=document.getElementById('source').getElementsByTagName('li');
+          var arr=new Array();
+          for(var i=0;i<allLi.length;i++){
+            var liTxt=allLi[i].innerHTML;
+            var place=liTxt.substr(0,2);
+            var num=liTxt.substr(10,2);
+             arr[i]=[place,num];
+          }
+         return arr
+}
+var Data=getData()
+console.log(Data);
+/**
+ * 按空气质量对data进行从大到小的排序
+ * 返回一个排序后的数组
+ */
+ function sort(a) {  
+  for(var i=0;i<a.length-1;i++){
+    for(var j=0;j<a.length-1-i;j++){
+      if (a[j][1]<a[j+1][1]) {
+        var f1=a[j];
+        var f2=a[j+1];
+        a[j]=f2;
+        a[j+1]=f1;
+      }
+    }
+  }
+}
+sort(Data);  //使函数从大到小重新排序
+
+/**
+ * 将排好序的城市及空气质量指数，输出显示到列表中
+ * 格式见ul中的注释的部分
+ */
+function show(a) {
+  var li=''
+  for(var i=0;i<a.length;i++){
+    if(i!=0 && (a[i][1]==a[i-1][1])){ //当污染指数相同时，排名相同！
+      var cur='<li>'+  '第'+(i)+'名:'+a[i][0]+'---'+"污染指度："+a[i][1]    +'</li>'
+    }
+    else{
+      var cur='<li>'+  '第'+(i+1)+'名:'+a[i][0]+'---'+"污染指度："+a[i][1]    +'</li>'
+    }
+  li+=cur;
+  }
+  document.getElementById('resort').innerHTML=li;
+}
+
+
+
+
+
+</script>
+</body>
+</html>

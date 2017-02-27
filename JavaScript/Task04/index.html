@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
+
         <style>
         	#box{
         		height: 60px;
@@ -21,18 +22,7 @@
         		cursor: pointer;
         	}
         </style>
-    </head>
-    <body>
-    <div id="sty" style="">
-    	<input type="text" id="inText" />
-    	<button id="leftIn" onclick="Lin()">左侧入</button>
-    	<button id="rightIn" onclick="Rin()">右侧入</button>
-    	<button id="leftOut" onclick="Lout()">左侧出</button>
-    	<button id="rightOut" onclick="Rout()">右侧出</button>
-    </div>
-    <div id="box" ></div>
-    </body>
-    <script>
+         <script>
     //当box中没有元素的时候添加进第一个
     	function createFirst() {
     		var newBlock=document.createElement('div');
@@ -97,11 +87,6 @@
     					
     			}   
     			
-					
-    			
-    				
-    				
-    				
     			 			
     		}	
     //删除左边第一个元素
@@ -128,4 +113,16 @@
 
 	
     </script>
+    </head>
+    <body>
+    <div id="sty" style="">
+    	<input type="text" id="inText" />
+    	<button id="leftIn" onclick="Lin()">左侧入</button>
+    	<button id="rightIn" onclick="Rin()">右侧入</button>
+    	<button id="leftOut" onclick="Lout()">左侧出</button>
+    	<button id="rightOut" onclick="Rout()">右侧出</button>
+    </div>
+    <div id="box" ></div>
+    </body>
+   
 </html>

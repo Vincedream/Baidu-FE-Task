@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript Task 01</title>
+  </head>
+<body>
+
+  <h3>污染城市列表</h3>
+  <button onclick="show(aqiData)">显示污染排序榜</button>
+  <button id="btn1" onclick="showred()">显示污染超标的城市</button>
+  <ul id="aqi-list">
+<!--   
+    <li>第一名：福州（样例），10</li>
+      <li>第二名：福州（样例），10</li> -->
+  </ul>
+
+<script type="text/javascript">
+
+var aqiData = [
+  ["北京", 90],
+  ["上海", 50],
+  ["福州", 10],
+  ["广州", 50],
+  ["成都", 90],
+  ["西安", 100]
+];
+
+//按照原来的排序显示出来
+function showyuan(a) {
+	var li=''
+	for(var i=0;i<a.length;i++){
+	
+	var cur='<li>'+a[i][0]+'---'+"污染指度："+a[i][1]    +'</li>'
+	
+	li+=cur;
+	}
+	document.getElementById('aqi-list').innerHTML=li;
+}
+ showyuan(aqiData);
+
+
+//冒泡函数，使二维数组依次减小
+function sort(a) {  
+	for(var i=0;i<a.length-1;i++){
+		for(var j=0;j<a.length-1-i;j++){
+			if (a[j][1]<a[j+1][1]) {
+				var f1=a[j];
+				var f2=a[j+1];
+				a[j]=f2;
+				a[j+1]=f1;
+			}
+		}
+	}
+}
+
+sort(aqiData);  //使函数从大到小重新排序
+
+
+//列出污染指数排名
+function show(a) {
+	var li=''
+	for(var i=0;i<a.length;i++){
+		if(i!=0 && (a[i][1]==a[i-1][1])){ //当污染指数相同时，排名相同！
+			var cur='<li>'+  '第'+(i)+'名:'+a[i][0]+'---'+"污染指度："+a[i][1]    +'</li>'
+		}
+		else{
+			var cur='<li>'+  '第'+(i+1)+'名:'+a[i][0]+'---'+"污染指度："+a[i][1]    +'</li>'
+		}
+	li+=cur;
+	}
+	document.getElementById('aqi-list').innerHTML=li;
+}
+
+
+//显示超标的城市
+function showred() {
+	show(aqiData);
+	for(var i=0;i<aqiData.length;i++){
+		if(aqiData[i][1]>=60){
+			var crea=document.createElement('a');
+			crea.innerHTML='---污染指数超标！'
+			var yuan=document.getElementsByTagName('li')[i];
+				yuan.appendChild(crea);
+			yuan.style.color='red';
+		}
+		else{
+			var yuan=document.getElementsByTagName('li')[i];
+			
+				yuan.style.display='none';
+		}
+	}
+	
+}
+
+
+
+
+</script>
+</body>
+</html>

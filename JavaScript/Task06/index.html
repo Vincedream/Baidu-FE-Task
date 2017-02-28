@@ -19,6 +19,7 @@
     	}
     </style>
     <script>
+	    //添加block盒子和内容
     	function addText() {
     		var textarea=document.getElementById('textInput').value;
     		textarea=textarea.replace(/[、,]|\s+|[\r]/g,","); //顿号句号空格回车 用，代替
@@ -33,6 +34,7 @@
 	    		newBlock.appendChild(node);
     		}
     	}
+	    //搜索盒子里面是否有匹配的内容
     	function Search() {
     			var box=document.getElementById('box');  
     			var block=box.children;

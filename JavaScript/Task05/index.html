@@ -6,9 +6,9 @@
         <style>
           #box{
             height: 120px;
-            width: 600px;
+            width: 604px;
             border: 2px solid red;
-            
+            text-align: center;
           }
 
           .block{          
@@ -101,14 +101,23 @@
           
                 
         } 
-    //删除左边第一个元素
-      function Lout() {
+        function Lout() {
           var box=document.getElementById('box');
           var lBox=box.children[0];
           console.log(lBox);
           box.removeChild(lBox);
           var textNum=lBox.innerHTML;
           alert('删除的数字是：'+textNum);
+      }
+
+
+    //删除左边第一个元素
+      function dele() {
+          var box=document.getElementById('box');
+          var lBox=box.children[0];    
+          box.removeChild(lBox);
+          var textNum=lBox.innerHTML;
+         
       }
     //删除右边第一个元素
       function Rout() {
@@ -124,22 +133,43 @@
           var box=document.getElementById('box');
           var allBox=box.children; 
           var allNum=new Array();
-          //获取所有blcok的值
+          //获取所有blcok的高度值
           for(var i=0;i<allBox.length;i++){
             allNum[i]=allBox[i].innerHTML;             
           }
-          //冒泡排序所有的值
-
-
-
-
-
+          
+          for(var j=0;j<allNum.length-1;j++){
+            for(var k=0;k<allNum.length-j-1;k++){
+              if(allNum[k]>allNum[k+1]){
+                var temp;
+                temp=allNum[k];
+                allNum[k]=allNum[k+1];
+                allNum[k+1]=temp;
+              }
+            }
+          }
+          
+          //先删除现有的block            
+            for(var p=0;p<allNum.length;p++){
+             dele();
+            }
           //根据排序后的数组来添加block
+          for(var l=0;l<allNum.length;l++){
+            var newBlock=document.createElement('div');
+            newBlock.className='block';
+            var box=document.getElementById('box');
+            box.appendChild(newBlock);
+            var nodeText=allNum[l];
+            var node=document.createTextNode(nodeText);
+            newBlock.appendChild(node); 
+            //设置blcok的css样式
+            newBlock.style.height=(nodeText*2)+'px'; 
+            newBlock.style.marginTop=(120-nodeText*2)+'px';
+            //新的block元素添加“点击消失”事件
+            
 
+          }
 
-
-
-                       
       }
     </script>
     </head>

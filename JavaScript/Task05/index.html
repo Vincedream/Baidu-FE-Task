@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <style>
+          #box{
+            height: 120px;
+            width: 600px;
+            border: 2px solid red;
+            
+          }
+
+          .block{          
+           
+            width: 20px;
+            background-color: pink;
+            text-align: center;
+            font-size: 17px;
+            float: left;
+            overflow: hidden;         
+            cursor: pointer;
+           margin-left: 1px;
+       
+          }
+        </style>
+         <script>
+    //当box中没有元素的时候添加进第一个
+      function createFirst() {
+        var newBlock=document.createElement('div');
+        newBlock.className='block';
+        var box=document.getElementById('box');
+        box.appendChild(newBlock);
+        var nodeText=document.getElementById('inText').value;
+        var node=document.createTextNode(nodeText);
+        newBlock.appendChild(node); 
+        //设置blcok的css样式
+        newBlock.style.height=(nodeText*2)+'px'; 
+        newBlock.style.marginTop=(120-nodeText*2)+'px';
+        //新的block元素添加“点击消失”事件
+        newBlock.onclick=function () {
+            box.removeChild(newBlock);
+          }
+
+      }
+    //从左边加入一个block
+      function Lin() {
+          var box=document.getElementById('box');
+          var boxNum=box.getElementsByTagName('div');
+          if(boxNum.length==0){  //判断是否含有第一个block,否则相当于新建第一个block
+            createFirst();
+          }
+          else if(boxNum.length>=60){
+            alert("超出了！")
+          }
+          else                //当box中含有block时，从左边插入
+          {
+            var newBlock=document.createElement('div');
+            newBlock.className='block';
+            var nodeText=document.getElementById('inText').value;
+            var node=document.createTextNode(nodeText);            
+            newBlock.appendChild(node);
+            box.insertBefore(newBlock,box.children[0]);
+            //设置blcok的css样式
+            newBlock.style.height=(nodeText*2)+'px';
+            newBlock.style.marginTop=(120-nodeText*2)+'px';
+            //新的block元素添加“点击消失”事件
+            newBlock.onclick=function () {
+              box.removeChild(newBlock);
+          } 
+            
+        } 
+      }
+     //从右边加入一个block
+      function Rin() {
+          var box=document.getElementById('box');
+          var boxNum=box.getElementsByTagName('div');
+          if(boxNum.length==0){  //判断是否含有第一个block,否则相当于新建第一个block
+            createFirst();
+          }
+           else if(boxNum.length>=60){
+            alert("超出了！")
+          }
+          else                //当box中含有block时，从左边插入
+          { 
+            var newBlock=document.createElement('div');
+              newBlock.className='block';
+            var nodeText=document.getElementById('inText').value;
+              var node=document.createTextNode(nodeText);              
+              newBlock.appendChild(node);
+              box.appendChild(newBlock);
+               //设置blcok的css样式
+              newBlock.style.height=(nodeText*2)+'px';
+               newBlock.style.marginTop=(120-nodeText*2)+'px';
+              //新的block元素添加“点击消失”事件
+              newBlock.onclick=function () {
+              box.removeChild(newBlock);
+          }
+              
+          }   
+          
+                
+        } 
+    //删除左边第一个元素
+      function Lout() {
+          var box=document.getElementById('box');
+          var lBox=box.children[0];
+          console.log(lBox);
+          box.removeChild(lBox);
+          var textNum=lBox.innerHTML;
+          alert('删除的数字是：'+textNum);
+      }
+    //删除右边第一个元素
+      function Rout() {
+          var box=document.getElementById('box');         
+          var allBox=box.children;          
+          var allBoxNum=allBox.length;
+          var rBox=box.children[allBoxNum-1];
+          box.removeChild(rBox);
+          var textNum=rBox.innerHTML;
+          alert('删除的数字是：'+textNum);
+      }
+      function Sort () {
+          var box=document.getElementById('box');
+          var allBox=box.children; 
+          var allNum=new Array();
+          //获取所有blcok的值
+          for(var i=0;i<allBox.length;i++){
+            allNum[i]=allBox[i].innerHTML;             
+          }
+          //冒泡排序所有的值
+
+
+
+
+
+          //根据排序后的数组来添加block
+
+
+
+
+                       
+      }
+    </script>
+    </head>
+    <body>
+    <div id="sty" style="">
+      请输入值(10~60)：
+      <input type="text" id="inText" onblur="if(/\D/.test(this.value)){alert('只能输入数字');this.value='';}else if(this.value<10 || this.value>60){alert('超出范围！')}"  />  
+      <button id="leftIn" onclick="Lin()">左侧入</button>
+      <button id="rightIn" onclick="Rin()">右侧入</button>
+      <button id="leftOut" onclick="Lout()">左侧出</button>
+      <button id="rightOut" onclick="Rout()">右侧出</button>
+      <button id="rightOut" onclick="Sort()">排序</button>
+    </div>
+    <div id="box" ></div>
+    </body>
+   
+</html>

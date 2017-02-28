@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <style>
+    #box{
+    	width: 300px;
+    	height: 50px;
+    	border: 1px solid red;
+    	margin-top: 5px;
+    }
+    	.block{
+    		
+    		background-color: pink;
+    		float: left;
+    		margin-left: 3px;
+    		padding:0 5px 0 5px;
+    	}
+    </style>
+    <script>
+    	function addText() {
+    		var textarea=document.getElementById('textInput').value;
+    		textarea=textarea.replace(/[、,]|\s+|[\r]/g,","); //顿号句号空格回车 用，代替
+    		textarealist=textarea.split(',');	//当字符串中出现“，”的时候，分段，返回一个数组
+    		for(var i=0;i<textarealist.length;i++){  //添加block
+	    		var newBlock=document.createElement('div');
+	    		newBlock.className='block';
+	    		var box=document.getElementById('box');
+	    		box.appendChild(newBlock);
+	    		var nodeText=textarealist[i];
+	    		var node=document.createTextNode(nodeText);
+	    		newBlock.appendChild(node);
+    		}
+    	}
+    	function Search() {
+    			var box=document.getElementById('box');  
+    			var block=box.children;
+    			console.log(block);
+    			var searchtext=document.getElementById('searchInput').value;
+    			if(searchtext){  //当有内容的时候运行
+    				for(var k=0;k<block.length;k++){  //清空查询标志css样式
+    						block[k].style.background="pink";
+    						block[k].style.color="black";
+    					}
+    					for(var i=0;i<block.length;i++){
+    						if(block[i].innerHTML.indexOf(searchtext)>-1){		//检测sezrchText中的字符是否存在于block中，存在则改变样式标注
+    							block[i].style.background="blue";
+    							block[i].style.color="white";
+    						}
+    					}
+    			}
+    	}
+    	
+    </script>
+    <body>
+    <textarea  id="textInput" style="width: 200px; height: 60px;"></textarea>
+    <button id="addBtn" onclick="addText()">添加</button>
+    <div>
+    	<input id="searchInput" style="width: 200px; "  />
+    <button id="searchBtn" onclick="Search()">搜索</button>
+    </div>
+    <div id="box">
+    	
+    </div>
+    </body>
+</html>

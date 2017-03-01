@@ -3,6 +3,11 @@
     <head>
         <meta charset="utf-8">
         <style>
+        .all{
+        	margin: 0px auto;
+        	width:1020px;
+        	text-align: center;
+        }
     	#a1{
     		width: 1000px;
     		height: 650px;
@@ -45,11 +50,16 @@
     		margin-left: 15px;
     		float: left;
     	}
+    	.bt{
+    		margin-top: 20px;
+    		text-align: center;
+    	}
     </style>
     </head>
     
     <body>
-    <div id="a1" >
+    <div class="all">
+    	<div id="a1" >
     	<div id="a2">
     		<div id="a4">
     			<div id="a8">
@@ -95,49 +105,109 @@
     		</div>
     	</div>   	
     </div>
-    <button id="btn1" onclick="pai()">asdasd</button>
+
+    <div class="bt">
+    <button class="btn" onclick="Pre()">先序遍历</button>
+    <button class="btn" onclick="In()">中序遍历</button>
+    <button class="btn" onclick="Post()">后序遍历</button>
+    </div>
+    </div>
     </body>
     <script>
+	//编号   
     var tree = ["a1","a2","a3","a4","a5","a6","a7","a8","a9","a10","a11","a12","a13","a14","a15","a16","a17","a18","a19","a20","a21","a22","a23","a24","a25","a26","a27","a28","a29","a30","a31",];
-    var afterTree=new Array();
-    var a=0;
+   	//设置经过三种遍历方法后的数组
+    
+    //先序
+    var preTree=new Array();
+	var preA=0;
+	//中序
+	var inTree=new Array();
+	var inA=0;
+	//后序
+	var postTree=new Array();
+	var postA=0;
 
-    console.log('preOrder:');
+   //先序遍历算法
     void function preOrderTraverse(x, visit) {
         visit(tree[x]);
         if (tree[2 * x + 1]) preOrderTraverse(2 * x + 1, visit);
         if (tree[2 * x + 2]) preOrderTraverse(2 * x + 2, visit);
     }(0, function (value) {
-        console.log(value);
-        afterTree[a]=value; 
-        a++;
-    });
-    console.log(afterTree.length);
+        preTree[preA]=value; 
+       	preA++;
+    });  //得到经过遍历后的先序数组
 
-    // function pai() {
-    // 	for(var i=0;i<afterTree.length;i++){
-	    	
-    // 		setTimeout("var i=document.getElementById(afterTree[i]).style.border='2px solid red'",500);	
-    // 	}
-    	
-    // }
-   function pai() {
+
+    function Pre() {
    	 var m=0;
     var time=setInterval(function () {
     	if(m!=0){
-    			document.getElementById(afterTree[m-1]).style.border="2px solid black";
+    		//当遍历到第二个以后，将之前的加粗样式取消
+    			document.getElementById(preTree[m-1]).style.border="2px solid black";
     	}
+    	if(m==31){
+ 		clearInterval(time);  //当遍历到你最后一个的时候，计时器取消
+ 		}
+    	//当遍历到此节点，改变样式
+    	document.getElementById(preTree[m]).style.border="5px solid red";
+    	m++;  	
     	
-    	document.getElementById(afterTree[m]).style.border="2px solid red";
-    	m++;
-    	
+    },500)
+   }
+
+   //中序遍历
+   void function inOrderTraverse(x, visit) {
+        if (tree[2 * x + 1]) inOrderTraverse(2 * x + 1, visit);
+        visit(tree[x]);
+        if (tree[2 * x + 2]) inOrderTraverse(2 * x + 2, visit);
+    }(0, function (value) {
+       inTree[inA]=value; 
+       	inA++;
+    });
+
+    console.log(inTree);
+    
+   function In() {
+   	var m=0;
+    var time=setInterval(function () {
+    	if(m!=0){
+    			document.getElementById(inTree[m-1]).style.border="2px solid black";
+    	}
     	if(m==31){
  		clearInterval(time);
  		}
-    },300)
+    	document.getElementById(inTree[m]).style.border="5px solid red";
+    	m++;
+    	
+    },500)
    }
- 
- 	
+
+   //后序遍历
+   void function postOrderTraverse(x, visit) {
+        if (tree[2 * x + 1]) postOrderTraverse(2 * x + 1, visit);
+        if (tree[2 * x + 2]) postOrderTraverse(2 * x + 2, visit);
+        visit(tree[x]);
+    }(0, function (value) {
+        postTree[postA]=value; 
+       	postA++;
+    });
+
+    function Post() {
+   	var m=0;
+    var time=setInterval(function () {
+    	if(m!=0){
+    			document.getElementById(postTree[m-1]).style.border="2px solid black";
+    	}
+    	if(m==31){
+ 		clearInterval(time);
+ 		}
+    	document.getElementById(postTree[m]).style.border="5px solid red";
+    	m++;
+    	
+    	
+    },500)
+   }
 
     </script>
 </html>

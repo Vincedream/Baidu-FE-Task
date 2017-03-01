@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style>
+    	#a1{
+    		width: 1000px;
+    		height: 650px;
+    		border: 2px solid black;
+    		padding-left: 15px;
+    		padding-top: 45px;
+    		
+    		
+    	}
+    	#a2,#a3{
+    		width: 970px;
+    		height: 240px;
+    		border: 2px solid black;
+    		
+    	}
+    	#a3{
+    		margin-top: 115px;
+    	}
+    	#a4,#a5,#a6,#a7{
+    		height:  180px;
+    		width: 460px;
+    		border: 2px solid black;
+    		margin-top: 30px;
+    		margin-left: 15px;
+			float: left;
+    	}
+    	#a8,#a9,#a10,#a11,#a12,#a13,#a14,#a15{
+    		width: 203px;
+    		height: 115px;
+    		border: 2px solid black;
+    		margin-top: 30px;
+    		margin-left: 15px;
+    		float: left;
+    	}
+    	#a16,#a17,#a18,#a19,#a20,#a21,#a22,#a23,#a24,#a25,#a26,#a27,#a28,#a29,#a30,#a31{
+    		height: 60px;
+    		width: 75px;
+    		border: 2px solid black;
+    		margin-top: 30px;
+    		margin-left: 15px;
+    		float: left;
+    	}
+    </style>
+    </head>
+    
+    <body>
+    <div id="a1" >
+    	<div id="a2">
+    		<div id="a4">
+    			<div id="a8">
+    				<div id="a16"></div>
+    				<div id="a17"></div>
+    			</div>
+    			<div id="a9">
+    				<div id="a18"></div>
+    				<div id="a19"></div>
+    			</div>
+    		</div>
+    		<div id="a5">
+    			<div id="a10">
+    				<div id="a20"></div>
+    				<div id="a21"></div>
+    			</div>
+    			<div id="a11">
+    				<div id="a22"></div>
+    				<div id="a23"></div>
+    			</div>
+    		</div>
+    	</div>
+    	<div id="a3">
+    		<div id="a6">
+    			<div id="a12">
+    				<div id="a24"></div>
+    				<div id="a25"></div>
+    			</div>
+    			<div id="a13">
+    				<div id="a26"></div>
+    				<div id="a27"></div>
+    			</div>
+    		</div>
+    		<div id="a7">
+    			<div id="a14">
+    				<div id="a28"></div>
+    				<div id="a29"></div>
+    			</div>
+    			<div id="a15">
+    				<div id="a30"></div>
+    				<div id="a31"></div>
+    			</div>
+    		</div>
+    	</div>   	
+    </div>
+    <button id="btn1" onclick="pai()">asdasd</button>
+    </body>
+    <script>
+    var tree = ["a1","a2","a3","a4","a5","a6","a7","a8","a9","a10","a11","a12","a13","a14","a15","a16","a17","a18","a19","a20","a21","a22","a23","a24","a25","a26","a27","a28","a29","a30","a31",];
+    var afterTree=new Array();
+    var a=0;
+
+    console.log('preOrder:');
+    void function preOrderTraverse(x, visit) {
+        visit(tree[x]);
+        if (tree[2 * x + 1]) preOrderTraverse(2 * x + 1, visit);
+        if (tree[2 * x + 2]) preOrderTraverse(2 * x + 2, visit);
+    }(0, function (value) {
+        console.log(value);
+        afterTree[a]=value; 
+        a++;
+    });
+    console.log(afterTree.length);
+
+    // function pai() {
+    // 	for(var i=0;i<afterTree.length;i++){
+	    	
+    // 		setTimeout("var i=document.getElementById(afterTree[i]).style.border='2px solid red'",500);	
+    // 	}
+    	
+    // }
+   function pai() {
+   	 var m=0;
+    var time=setInterval(function () {
+    	if(m!=0){
+    			document.getElementById(afterTree[m-1]).style.border="2px solid black";
+    	}
+    	
+    	document.getElementById(afterTree[m]).style.border="2px solid red";
+    	m++;
+    	
+    	if(m==31){
+ 		clearInterval(time);
+ 		}
+    },300)
+   }
+ 
+ 	
+
+    </script>
+</html>

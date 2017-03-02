@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <style>
+    *{
+    	color: #bf0eca;
+    	word-wrap:break-word;
+        cursor: pointer;
+    }
+    body{
+        cursor: default;
+    }
+        .block{
+            
+            border: 1px solid red;
+        }
+
+    	#a1{
+    		height: 340px;
+    		width: 1500px;
+    		border: 1px solid red;  		
+            display: flex;
+            justify-content:space-around;
+            align-items:center;
+    	}
+    	#b1{
+			height: 250px;
+			width: 620px;
+			border: 1px solid red;
+    		 display: flex;
+            justify-content:space-around;
+            align-items:center;
+    	}
+    	#b2{
+			height: 250px;
+			width: 650px;
+			border: 1px solid red;
+    		 display: flex;
+            justify-content:space-around;
+            align-items:center;
+    	}
+    	#b3{
+			height: 250px;
+			width: 100px;
+			border: 1px solid red;
+    		 display: flex;
+            justify-content:space-around;
+            align-items:center;
+    	}
+    	#c1{
+			height: 200px;
+			width: 300px;
+			border: 1px solid red;
+    	       display: flex;
+            justify-content:space-around;
+            align-items:center;
+    	}
+    	#c2{
+			height: 200px;
+			width: 30px;
+			border: 1px solid red;
+    		
+    		
+    	}
+    	#c3{
+			height: 200px;
+			width: 200px;
+			border: 1px solid red;
+    		display: flex;
+            justify-content:space-around;
+            align-items:center;
+    	}
+    	#d1{
+    		height: 200px;
+			width: 240px;
+            border: 1px solid red;
+			display: flex;
+            justify-content:space-around;
+            align-items:center;
+    	}
+    	#d2{
+    		height: 200px;
+			width: 330px;
+			border: 1px solid red;
+    	    display: flex;
+            justify-content:space-around;
+            align-items:center;
+    	}
+    	#e1
+    	{
+    		height: 100px;
+			width: 35px;
+			border: 1px solid red;
+    		
+    	}
+    	#e2
+    	{
+    		height: 100px;
+			width: 35px;
+			border: 1px solid red;
+    		
+    	}
+    	#e3
+    	{
+    		height: 100px;
+			width: 35px;
+			border: 1px solid red;
+    		
+    	}
+    	#e4
+    	{
+    		height: 100px;
+			width: 35px;
+			border: 1px solid red;
+    		
+    	}
+    	#f1{
+			height: 150px;
+			width: 40px;
+			border: 1px solid red;
+    		
+    	}
+    	#f2{
+			height: 150px;
+			width: 40px;
+			border: 1px solid red;
+    		
+    	}
+		#g1{
+    		height: 160px;
+			width: 50px;
+			border: 1px solid red;
+    		
+    	}
+    	#g2{
+    		height: 160px;
+			width: 50px;
+			border: 1px solid red;
+    		
+    	}
+    	#g3{
+    		height: 160px;
+			width: 50px;
+			border: 1px solid red;
+    		
+    	}
+    	#h1{
+    		height: 160px;
+			width:115px;
+			border: 1px solid red;
+             display: flex;
+            justify-content:space-around;
+            align-items:center;
+    		
+    	}
+    	#h2{
+    		height: 160px;
+			width: 85px;
+			border: 1px solid red;
+    		
+    	}
+    	#i1{
+    		height: 120px;
+			width: 25px;
+			border: 1px solid red;
+    		
+    	}
+    </style>
+
+
+    <body>
+	
+	<div id="a1">supper
+		<div id="b1">life
+			<div id="c1">apple
+				<div id="e1">pear</div>
+				<div id="e2">pig</div>
+				<div id="e3">colo</div>
+				<div id="e4">soccer</div>	
+             </div>   		
+			<div id="c2">pho</div>
+			<div id="c3">study
+				<div id="f1">book</div>
+				<div id="f2">school</div>	
+            </div>    
+        </div>        				
+		<div id="b2">note
+			<div id="d1">human
+				<div id="g1">code</div>
+				<div id="g2">operate</div>
+				<div id="g3">man</div>
+                </div>			
+			<div id="d2">program
+				<div id="h1">element
+					<div id="i1">cat</div>
+                    </div>
+                   			
+				<div id="h2">class</div>
+                 </div> 
+                </div>			
+		<div id="b3">fish</div>	
+</div>
+        <div style="position: absolute; top: 380px;left: 700px">			
+		<button  onclick="Dele()">删除</button>
+        <input type="text" id="deInput">
+        <button onclick="Add()">增加</button>
+        </div>
+    </body>
+	<script>
+		
+        var menus=[
+        	{"id":"a1","text":"supper","children":[
+        		{"id":"b1","text":"life","children":[
+        			{"id":"c1","text":"apple","children":[
+	        			{"id":"e1","text":"pear"},
+	        			{"id":"e2","text":"pig"},
+	        			{"id":"e3","text":"colo"},
+	        			{"id":"e4","text":"soccer"}
+        			]},
+        			 {"id":"c2","text":"pho"},
+        			 {"id":"c3","text":"study","children":[
+        			 	{"id":"f1","text":"book"},
+        			 	{"id":"f2","text":"school"}
+        			 ]}
+        			]
+        		},
+        		{"id":"b2","text":"note","children":[
+        			{"id":"d1","text":"human","children":[
+        				{"id":"g1","text":"code"},
+        				{"id":"g2","text":"operate"},
+        				{"id":"g3","text":"man"}
+        			]},
+        			{"id":"d2","text":"program","children":[
+        				{"id":"h1","text":"element","children":[
+        					{"id":"i1","text":"cat"}
+        				]},
+        				{"id":"h2","text":"class"}
+        			]}
+        		]},
+				{"id":"b3","text":"fish"}]}]
+        
+        var allNode=new Array(); //经过遍历后得到的数组
+        var gg=0
+        //得到遍历后排序的allnode数组
+		var parseTreeJson = function(treeNodes){
+       if (!treeNodes || !treeNodes.length) return;
+       for (var i = 0, len = treeNodes.length; i < len; i++) {
+            var childs = treeNodes[i].children;
+            //console.log(treeNodes[i].id);
+            allNode[gg]=treeNodes[i].id;
+            gg++;
+           
+			document.getElementById(treeNodes[i].id).style.border="3px solid black";
+            
+            if(childs && childs.length > 0){
+                 parseTreeJson(childs);
+            }
+       }
+    };
+    parseTreeJson(menus);
+
+   
+
+
+
+    //给每个元素添加一个点击改变CSS样式的事件
+    for(s=0;s<allNode.length;s++){
+        document.getElementById(allNode[s]).addEventListener("click",chan,true)
+    }
+    function chan() {
+            for(var r=0;r<allNode.length;r++){
+                         document.getElementById(allNode[r]).style.border="3px solid black";
+                    }
+                this.style.border="3px solid red";
+    }
+    
+  
+	//输入text获得id函数：
+		//jsonData:数据集
+        //text:输入的查询值
+        //json:目标ID结果集
+function GetSubJson(jsonData, text, json) {
+            for (var i = 0; i < jsonData.length; i++) {
+                if (jsonData[i].text == text)
+                    json.push(jsonData[i]);
+                else {
+                    if (jsonData[i].hasOwnProperty("children")) {
+                        GetSubJson(jsonData[i].children, text, json);
+                    }
+                }
+            }
+        }
+        //例如
+  
+
+
+        //删除函数
+        function Dele() {
+            //遍历所有div，样式改变成red的即为选择对象
+            var b=0
+            for(var f=0;f<allNode.length;f++){
+               if(document.getElementById(allNode[f]).style.border=="3px solid red") {
+                b=f
+               }
+            }
+        
+
+            var mubiao=document.getElementById(allNode[b]);
+            console.log(mubiao.parentNode);
+            mubiao.parentNode.removeChild(mubiao);
+
+
+        }
+
+
+
+
+
+        //在div盒子下面添加子元素
+        function Add() {
+            
+             var b=0
+            for(var f=0;f<allNode.length;f++){
+               if(document.getElementById(allNode[f]).style.border=="3px solid red") {
+                b=f
+               }
+            }
+            console.log(allNode[b]);
+            var newBlock=document.createElement('div');        
+            var box=document.getElementById(allNode[b]);
+            var nodeText=document.getElementById('deInput').value;
+            newBlock.innerHTML=nodeText; 
+            //获取兄弟节点的样式，并且克隆到自己身上
+             var w=getComputedStyle(box.children[0],false).width;
+            var h=getComputedStyle(box.children[0],false).height;
+            var b=getComputedStyle(box.children[0],false).border;
+            newBlock.style.width=w;
+             newBlock.style.height=h;
+              newBlock.style.border=b;
+
+            console.log(b);
+
+            box.appendChild(newBlock);
+
+           
+
+        }
+
+	</script>
+
+	
+	
+	
+
+</html>

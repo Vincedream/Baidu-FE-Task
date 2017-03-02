@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <style>
+    *{
+    	color: #bf0eca;
+    	word-wrap:break-word;
+        cursor: pointer;
+    }
+    	#a1{
+    		height: 340px;
+    		width: 1300px;
+    		border: 1px solid red;
+    		position: absolute;
+    	}
+    	#b1{
+			height: 250px;
+			width: 450px;
+			border: 1px solid red;
+    		position: absolute;
+    		top: 43px;
+    		left: 20px;
+    	}
+    	#b2{
+			height: 250px;
+			width: 450px;
+			border: 1px solid red;
+    		position: absolute;
+    		top: 43px;
+    		left: 520px;
+    	}
+    	#b3{
+			height: 250px;
+			width: 250px;
+			border: 1px solid red;
+    		position: absolute;
+    		top: 43px;
+    		left: 1020px;
+    	}
+    	#c1{
+			height: 200px;
+			width: 220px;
+			border: 1px solid red;
+    		position: absolute;
+    		top: 73px;
+    		left: 35px;
+    	}
+    	#c2{
+			height: 200px;
+			width: 30px;
+			border: 1px solid red;
+    		position: absolute;
+    		top: 73px;
+    		left: 263px;
+    	}
+    	#c3{
+			height: 200px;
+			width: 160px;
+			border: 1px solid red;
+    		position: absolute;
+    		top: 73px;
+    		left: 300px;
+    	}
+    	#d1{
+    		height: 200px;
+			width: 200px;
+			border: 1px solid red;
+    		position: absolute;
+    		top: 73px;
+    		left: 540px;
+    	}
+    	#d2{
+    		height: 200px;
+			width: 200px;
+			border: 1px solid red;
+    		position: absolute;
+    		top: 73px;
+    		left: 755px;
+    	}
+    	#e1
+    	{
+    		height: 100px;
+			width: 40px;
+			border: 1px solid red;
+    		position: absolute;
+    		top: 123px;
+    		left: 45px;
+    	}
+    	#e2
+    	{
+    		height: 100px;
+			width: 40px;
+			border: 1px solid red;
+    		position: absolute;
+    		top: 123px;
+    		left: 95px;
+    	}
+    	#e3
+    	{
+    		height: 100px;
+			width: 40px;
+			border: 1px solid red;
+    		position: absolute;
+    		top: 123px;
+    		left: 150px;
+    	}
+    	#e4
+    	{
+    		height: 100px;
+			width: 40px;
+			border: 1px solid red;
+    		position: absolute;
+    		top: 123px;
+    		left: 205px;
+    	}
+    	#f1{
+			height: 150px;
+			width: 60px;
+			border: 1px solid red;
+    		position: absolute;
+    		top: 100px;
+    		left: 312px;
+    	}
+    	#f2{
+			height: 150px;
+			width: 60px;
+			border: 1px solid red;
+    		position: absolute;
+    		top: 100px;
+    		left: 385px;
+    	}
+		#g1{
+    		height: 160px;
+			width: 50px;
+			border: 1px solid red;
+    		position: absolute;
+    		top: 93px;
+    		left: 550px;
+    	}
+    	#g2{
+    		height: 160px;
+			width: 50px;
+			border: 1px solid red;
+    		position: absolute;
+    		top: 93px;
+    		left: 615px;
+    	}
+    	#g3{
+    		height: 160px;
+			width: 50px;
+			border: 1px solid red;
+    		position: absolute;
+    		top: 93px;
+    		left: 680px;
+    	}
+    	#h1{
+    		height: 160px;
+			width: 85px;
+			border: 1px solid red;
+    		position: absolute;
+    		top: 93px;
+    		left: 765px;
+    	}
+    	#h2{
+    		height: 160px;
+			width: 85px;
+			border: 1px solid red;
+    		position: absolute;
+    		top: 93px;
+    		left: 860px;
+    	}
+    	#i1{
+    		height: 120px;
+			width: 55px;
+			border: 1px solid red;
+    		position: absolute;
+    		top: 113px;
+    		left: 780px;
+    	}
+    </style>
+
+
+    <body>
+	
+	<div id="a1">supper</div>
+		<div id="b1">life</div>
+			<div id="c1">apple</div>
+				<div id="e1">pear</div>
+				<div id="e2">pig</div>
+				<div id="e3">colo</div>
+				<div id="e4">soccer</div>			
+			<div id="c2">pho</div>
+			<div id="c3">study</div>
+				<div id="f1">book</div>
+				<div id="f2">school</div>					
+		<div id="b2">note</div>
+			<div id="d1">human</div>
+				<div id="g1">code</div>
+				<div id="g2">operate</div>
+				<div id="g3">man</div>			
+			<div id="d2">program</div>
+				<div id="h1">element</div>
+					<div id="i1">cat</div>				
+				<div id="h2">class</div>			
+		<div id="b3">fish</div>	
+		<div style="position: absolute; top: 380px;left: 500px">
+			<button onclick="Pre()" style="color: black;">遍历</button>
+		<input type="text" id="inPut" style="">
+	<button onclick="search()" style="color: black">查询</button>
+		</div>
+    </body>
+	<script>
+		
+        var menus=[
+        	{"id":"a1","text":"supper","children":[
+        		{"id":"b1","text":"life","children":[
+        			{"id":"c1","text":"apple","children":[
+	        			{"id":"e1","text":"pear"},
+	        			{"id":"e2","text":"pig"},
+	        			{"id":"e3","text":"colo"},
+	        			{"id":"e4","text":"soccer"}
+        			]},
+        			 {"id":"c2","text":"pho"},
+        			 {"id":"c3","text":"study","children":[
+        			 	{"id":"f1","text":"book"},
+        			 	{"id":"f2","text":"school"}
+        			 ]}
+        			]
+        		},
+        		{"id":"b2","text":"note","children":[
+        			{"id":"d1","text":"human","children":[
+        				{"id":"g1","text":"code"},
+        				{"id":"g2","text":"operate"},
+        				{"id":"g3","text":"man"}
+        			]},
+        			{"id":"d2","text":"program","children":[
+        				{"id":"h1","text":"element","children":[
+        					{"id":"i1","text":"cat"}
+        				]},
+        				{"id":"h2","text":"class"}
+        			]}
+        		]},
+				{"id":"b3","text":"fish"}]}]
+        
+        var allNode=new Array(); //经过遍历后得到的数组
+        var gg=0
+        //得到遍历后排序的allnode数组
+		var parseTreeJson = function(treeNodes){
+       if (!treeNodes || !treeNodes.length) return;
+       for (var i = 0, len = treeNodes.length; i < len; i++) {
+            var childs = treeNodes[i].children;
+            //console.log(treeNodes[i].id);
+            allNode[gg]=treeNodes[i].id;
+            gg++;
+            console.log("dfs");
+			document.getElementById(treeNodes[i].id).style.border="3px solid black";
+            document.getElementById(treeNodes[i].id).onclick=function () {
+                        for(var l=0;l<treeNodes.length;l++){
+                            document.getElementById(treeNodes[l].id).style.border="3px solid black";
+                        }
+                        this.style.border="3px solid red";
+                }
+            if(childs && childs.length > 0){
+                 parseTreeJson(childs);
+            }
+       }
+    };
+    parseTreeJson(menus);
+    //遍历整个树
+    function Pre() {
+   	 var m=0;
+    var time=setInterval(function () {
+    	if(m!=0){
+    		//当遍历到第二个以后，将之前的加粗样式取消
+    			document.getElementById(allNode[m-1]).style.border="2px solid black";
+    	}
+    	if(m==20){
+ 		clearInterval(time);  //当遍历到你最后一个的时候，计时器取消
+ 		}
+    	//当遍历到此节点，改变样式
+    	document.getElementById(allNode[m]).style.border="2px solid red";
+    	m++;  	
+    	
+    },500)
+   }
+  
+	//输入text获得id函数：
+		//jsonData:数据集
+        //text:输入的查询值
+        //json:目标ID结果集
+function GetSubJson(jsonData, text, json) {
+            for (var i = 0; i < jsonData.length; i++) {
+                if (jsonData[i].text == text)
+                    json.push(jsonData[i]);
+                else {
+                    if (jsonData[i].hasOwnProperty("children")) {
+                        GetSubJson(jsonData[i].children, text, json);
+                    }
+                }
+            }
+        }
+        //例如
+        
+function search() {
+		//第二次查询时，清空CSS样式
+		for(var k=0;k<allNode.length;k++){
+			document.getElementById(allNode[k]).style.border="2px solid black";
+		}
+		var inText=document.getElementById('inPut').value;//获取查询值
+		var json = [];
+        GetSubJson(menus, inText, json);
+       // console.log(json[0].id); //json[0].id为获取到匹配的id
+        if(json.length==0){   //当查询值不存在时，弹出提示框
+        	alert("糟糕，查不到该值！要不再找找？");
+        	return false;
+        }
+        
+        var right=0
+        for(var w=0;w<allNode.length;w++){	//获取匹配值的index
+        	if(json[0].id==allNode[w])
+        		right=w;
+        }
+        console.log(right);
+        //查询改变其样式
+		var m=0;
+	    var time=setInterval(function () {
+	    	if(m!=0){
+	    		//当遍历到第二个以后，将之前的加粗样式取消
+	    			document.getElementById(allNode[m-1]).style.border="2px solid black";
+	    	}
+	    	if(m==right){
+	 		clearInterval(time);  //当遍历查询值时，计时器取消
+	 		}
+	    	//当遍历到此节点，改变样式
+	    	document.getElementById(allNode[m]).style.border="2px solid red";
+	    	m++;  	
+	    	
+	    },500)
+}
+	</script>
+
+	
+	
+	
+
+</html>

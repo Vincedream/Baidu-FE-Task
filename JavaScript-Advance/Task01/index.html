@@ -3,6 +3,94 @@
     <head>
         <meta charset="utf-8">
     </head>
+    <style>
+    	#allInput{
+    		font-size: 20px;
+    	}
+    	#input{
+    		height: 20px;
+    		width: 200px;
+    		border-radius:5px;
+    		border: 2px solid #c5c0c0;
+    		outline:none
+    	}
+
+    	
+    	#btn{
+    		height: 29px;
+    		width: 58px;
+    		background-color: #2f79ba;
+			border: 1px solid white;
+			border-radius: 5px;
+			color: white;
+			cursor:pointer;
+			font-size: 17px;
+			line-height: 29px;
+    	}
+    	#btn:hover{
+    		background-color: #3b96e6;
+    	}
+    	#text{
+    		margin-left: 50px;
+    		font-size: 12px;
+    		color: gray;
+    	}
+    </style>
     <body>
+    <div id="chick">
+    	<div id="allInput">
+    		<span>名称</span>
+    		<input type="text" id="input">
+    		<button id="btn" onclick="Chick()">验证</button>
+    	</div>
+    	<div id="text">必填，长度为4~6个字符</div>
+    </div>
     </body>
+    <script>
+    	
+
+    	function Chick() {
+    		var inP=document.getElementById('input');
+    		var txtval=inP.value;
+    		var tip=document.getElementById('text');
+    		var tipTxt=tip.innerHTML;
+    		var inputK=document.getElementById('input');
+    
+    		//用Unicode编码格式计算中文字符和其他字符长度
+    		var len=0;
+    		for(var i=0;i<txtval.length;i++){
+    			if(txtval.charCodeAt(i)>127||txtval.charCodeAt(i)==94){
+    				len+=2;
+    			}
+    			else{
+    				len++;
+    			}
+    		}
+    		
+    		if(txtval==""){
+    			tip.innerHTML="名字不能为空！";
+    			tip.style.color="red";
+    			inputK.style.border="2px solid red"
+    			inP.focus();
+    		}
+    		else if(len<4){
+    			tip.innerHTML="字符串小于4！";
+    			tip.style.color="red";
+    			inputK.style.border="2px solid red"
+    			inP.focus();
+    		}
+    		else if(len>6){
+    			tip.innerHTML="字符串大于6！";
+    			tip.style.color="red";
+    			inputK.style.border="2px solid red"
+    			inP.focus();
+    		}
+    		else{
+    			tip.innerHTML="验证通过！";
+    			tip.style.color="green";
+    			inputK.style.border="2px solid green"
+    		
+    		}
+    	}
+    </script>
 </html>

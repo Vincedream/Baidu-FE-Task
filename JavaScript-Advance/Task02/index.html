@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <style>
+    	.all{
+    		font-size: 20px;
+    	}
+    	#input{
+    		height: 20px;
+    		width: 200px;
+    		border-radius:5px;
+    		border: 2px solid #c5c0c0;
+    		outline:none
+    	}
+
+    	.text{
+    		height: 20px;
+    		margin-left: 50px;
+    		font-size: 12px;
+    		color: gray;
+    	}
+    </style>
+    <body>
+    <div id="chick">
+    	<div class="all" >
+    		<span>名称</span>
+    		<input type="text" class="input" id="inputName" onfocus="FocName()" onblur="BluName()">  	
+    	</div>
+    	<div class="text" id="textName" ></div>
+
+
+    	<div class="all" >
+    		<span>密码</span>
+    		<input type="password" class="input" id="inputPass" onfocus="FocPass()" onblur="BluPass()">  	
+    	</div>
+    	<div class="text" id="textPass" ></div>
+
+	
+    	<div class="all" >
+    		<span>密码确认</span>
+    		<input type="password" class="input" id="inputPassAgain" onfocus="FocPassAgain()" onblur="BluPassAgain()">  	
+    	</div>
+    	<div class="text" id="textPassAgain" ></div>
+
+    	<div class="all" >
+    		<span>邮箱</span>
+    		<input type="text" class="input" id="inputEmail" onfocus="FocEmail()" onblur="BluEmail()">  	
+    	</div>
+    	<div class="text" id="textEmail" ></div>
+
+    	<div class="all" >
+    		<span>手机</span>
+    		<input type="text" class="input" id="inputTell" onfocus="FocTell()" onblur="BluTell()">  	
+    	</div>
+    	<div class="text" id="textTell" ></div>
+    </div>
+    </body>
+    <script>
+
+    	//名称验证
+    	function FocName() {
+    		var tip=document.getElementById('textName');
+    		tip.innerHTML="必填，长度为4~6个字符";
+    	}
+
+    	function BluName() {
+    		var inP=document.getElementById('inputName');
+    		var txtval=inP.value;
+    		var tip=document.getElementById('textName');
+    		
+    	
+    
+    		//用Unicode编码格式计算中文字符和其他字符长度
+    		var len=0;
+    		for(var i=0;i<txtval.length;i++){
+    			if(txtval.charCodeAt(i)>127||txtval.charCodeAt(i)==94){
+    				len+=2;
+    			}
+    			else{
+    				len++;
+    			}
+    		}
+    		
+    		if(txtval==""){
+    			
+    			tip.style.color="red";
+    			inP.style.border="2px solid red"
+    			tip.innerHTML="名字不能为空！";
+    		}
+    		else if(len<4){
+    			
+    			tip.style.color="red";
+    			inP.style.border="2px solid red"
+    			tip.innerHTML="字符串必需要大于4！";
+    		}
+    		else if(len>6){
+    			
+    			tip.style.color="red";
+    			inP.style.border="2px solid red"
+    			tip.innerHTML="字符串必需小于6！";
+    		}
+    		else{  			
+    			tip.style.color="green";
+    			inP.style.border="2px solid green";
+    			tip.innerHTML="名称可用！";	
+    			
+    		}
+    	}
+    	
+
+    	//密码验证
+    	var firstPassTxt;
+    	function FocPass() {
+    		var tip=document.getElementById('textPass');
+    		tip.innerHTML="必填，长度大于6个字符";
+    	}
+
+    	function BluPass() {
+    		var inP=document.getElementById('inputPass');
+    		var txtval=inP.value;
+    		var tip=document.getElementById('textPass');
+
+
+    		var len=txtval.length;
+    		if(txtval==""){
+    			
+    			tip.style.color="red";
+    			inP.style.border="2px solid red"
+    			tip.innerHTML="密码不能为空！";
+    		}
+    		else if(len<6){
+    			
+    			tip.style.color="red";
+    			inP.style.border="2px solid red"
+    			tip.innerHTML="密码字符个数需要大于6！";
+    		}
+    		
+    		else{  			
+    			tip.style.color="green";
+    			inP.style.border="2px solid green";
+    			tip.innerHTML="可用！";	
+    			
+    	 		firstPassTxt=document.getElementById('inputPass').value;
+    		}
+
+    	}
+    	 
+
+
+    	//二次密码验证
+    	function FocPassAgain() {
+    		var tip=document.getElementById('textPassAgain');
+    		tip.innerHTML="请再次输入密码";
+    		console.log(firstPassTxt);
+    	}
+    	function BluPassAgain() {
+    		var inP=document.getElementById('inputPassAgain');
+    		var txtval=inP.value;
+    		var tip=document.getElementById('textPassAgain');
+
+    		if(txtval!=firstPassTxt){
+    			tip.style.color="red";
+    			inP.style.border="2px solid red"
+    			tip.innerHTML="密码不一致！";
+    		}
+    		else{  			
+    			tip.style.color="green";
+    			inP.style.border="2px solid green";
+    			tip.innerHTML="验证通过！";	
+    			
+    		}
+    	}
+
+    	
+
+
+    </script>
+</html>

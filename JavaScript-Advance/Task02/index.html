@@ -55,9 +55,15 @@
     		<input type="text" class="input" id="inputTell" onfocus="FocTell()" onblur="BluTell()">  	
     	</div>
     	<div class="text" id="textTell" ></div>
+
+    	<div>
+    		<button id="chickBtn"  onclick="chickAll()">提交</button>
+    	</div>
     </div>
     </body>
     <script>
+
+    var chick=0;//定义全局变量检查总和
 
     	//名称验证
     	function FocName() {
@@ -105,7 +111,7 @@
     			tip.style.color="green";
     			inP.style.border="2px solid green";
     			tip.innerHTML="名称可用！";	
-    			
+    			chick++;
     		}
     	}
     	
@@ -141,7 +147,7 @@
     			tip.style.color="green";
     			inP.style.border="2px solid green";
     			tip.innerHTML="可用！";	
-    			
+    			chick++;
     	 		firstPassTxt=document.getElementById('inputPass').value;
     		}
 
@@ -169,12 +175,78 @@
     			tip.style.color="green";
     			inP.style.border="2px solid green";
     			tip.innerHTML="验证通过！";	
-    			
+    			chick++;
     		}
     	}
 
-    	
+    	//电话验证
+    	function FocTell() {
+    		var tip=document.getElementById('textTell');
+    		tip.innerHTML="请输入你的手机号";
+    	}
+    	function BluTell() {
+    		var inP=document.getElementById('inputTell');
+    		var txtval=inP.value;
+    		var tip=document.getElementById('textTell');
 
+    		var len=0;
+    		for(var i=0;i<txtval.length;i++){
+    			if(txtval.charCodeAt(i)>46&&txtval.charCodeAt(i)<57){
+    				len+=1;
+    			}
+    			else{
+    				
+    			}
+    		}
+
+
+    		if(len!=11){
+    			tip.style.color="red";
+    			inP.style.border="2px solid red"
+    			tip.innerHTML="请输入正确的手机号码！";
+    		}
+    		else if(len==11){  			
+    			tip.style.color="green";
+    			inP.style.border="2px solid green";
+    			tip.innerHTML="手机号码验证通过！";	
+    			chick++;
+    		}
+    	}
+
+
+    	//emial验证
+    	function FocEmail() {
+    		var tip=document.getElementById('textEmail');
+    		tip.innerHTML="请输入Email";
+    	}
+    	function BluEmail() {
+    		var inP=document.getElementById('inputEmail');
+    		var txtval=inP.value;
+    		var tip=document.getElementById('textEmail');
+
+    		if(txtval.indexOf("@") == -1 || txtval.indexOf(".") == -1){
+    			tip.style.color="red";
+    			inP.style.border="2px solid red"
+    			tip.innerHTML="邮箱格式不正确！";
+    		}
+    		else{  			
+    			tip.style.color="green";
+    			inP.style.border="2px solid green";
+    			tip.innerHTML="邮箱验证通过！";	
+    			chick++;
+    		}
+    	}
+
+
+
+    	function chickAll() {
+    		if(chick==5){
+    			alert("提交成功！");
+    		}	
+    		else{
+    			alert("提交失败！");
+    		}
+    	}
 
     </script>
 </html>

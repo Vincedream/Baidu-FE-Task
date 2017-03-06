@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <style type="text/css">
+#latt {
+    border-bottom: 1px solid #CCCCCC;
+    border-left: 1px solid #CCCCCC;
+    position: absolute;
+    float: left;
+}
+#latt td {
+    border-right: 1px solid #CCCCCC;
+    border-top: 1px solid #CCCCCC;
+	height:40px;
+	width:40px;
+}
+
+.top_boy{
+	height: 32px;
+	width: 42px;
+	background-color: blue;
+	position: absolute;
+	border-top: 10px solid red;
+}
+.left_boy{
+	height: 42px;
+	width: 32px;
+	background-color: blue;
+	position: absolute;
+	border-left: 10px solid red;
+}
+.right_boy{
+	height: 42px;
+	width: 32px;
+	background-color: blue;
+	position: absolute;
+	border-right: 10px solid red;
+}
+.bottom_boy{
+	height: 32px;
+	width: 42px;
+	background-color: blue;
+	position: absolute;
+	border-bottom: 10px solid red;
+}
+
+</style>
+    <body>
+	<div style="height: 40px;width: 455px; text-indent:52px;letter-spacing:24px;font-size: 30px;">0123456789</div>
+	<div style="height: 415px;width: 30px; padding-left: 12px;  word-wrap: break-word;letter-spacing:30px;font-size: 31px;">0123456789</div>
+	<div style="height: 411px; width: 411px; position: absolute;top: 51px;left: 51px;">
+	<div id="boy" class="top_boy" style="left: 164px; top: 164px;"></div>
+		<table id='latt' cellpadding="0" cellspacing="0">
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+
+     <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+
+     <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+
+     <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+
+     <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+
+     <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+
+     <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+
+     <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+
+     <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+
+     <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+	</div>
+	<input type="text" id="inpTxt">
+	<button id="btn" onclick="Cha()">YES</button>
+
+    </body>
+
+    <script>
+    	var boy=document.getElementById('boy'); //获取小方块元素  	
+    	var firstClass=boy.className; //获得初始位置的classname
+    	
+    	function Cha() {
+    		var inptext=document.getElementById('inpTxt').value;   //获得输入框的值
+    		
+    		//向左转
+    		if(inptext=="TUN LEF" && firstClass=="top_boy" ){
+    			boy.className="left_boy"; 
+    		}
+    		if(inptext=="TUN LEF" && firstClass=="left_boy" ){
+    			boy.className="bottom_boy";    			
+    		}
+    		if(inptext=="TUN LEF" && firstClass=="right_boy" ){
+    			boy.className="top_boy";    			
+    		}
+    		if(inptext=="TUN LEF" && firstClass=="bottom_boy" ){
+    			boy.className="right_boy";    			
+    		}
+
+    		//向右转
+    		if(inptext=="TUN RIG" && firstClass=="top_boy" ){
+    			boy.className="right_boy";    			
+    		}
+    		if(inptext=="TUN RIG" && firstClass=="left_boy" ){
+    			boy.className="top_boy";    			
+    		}
+    		if(inptext=="TUN RIG" && firstClass=="right_boy" ){
+    			boy.className="bottom_boy";    			
+    		}
+    		if(inptext=="TUN RIG" && firstClass=="bottom_boy" ){
+    			boy.className="left_boy";    			
+    		}
+
+    		//向后转
+    		if(inptext=="TUN BAC" && firstClass=="top_boy" ){
+    			boy.className="bottom_boy";    			
+    		}
+    		if(inptext=="TUN BAC" && firstClass=="left_boy" ){
+    			boy.className="right_boy";    			
+    		}
+    		if(inptext=="TUN BAC" && firstClass=="right_boy" ){
+    			boy.className="left_boy";    			
+    		}
+    		if(inptext=="TUN BAC" && firstClass=="bottom_boy" ){
+    			boy.className="top_boy";    			
+    		}
+
+
+
+
+			var firstt=boy.style.top;		//获得当前的top值	
+			var firstTop=firstt.replace("px",""); //去掉“px”
+			var firstTopNum=parseInt(firstTop);  //将字符串转化为int
+
+			var firstl=boy.style.left;
+			var firstLeft=firstl.replace("px","")
+			var firstLeftNum=parseInt(firstLeft);
+
+			
+
+    		//向前走
+    		if(inptext=="TRA TOP" ){
+    			
+    			 boy.style.top=(firstTopNum-41)+"px";
+    		}
+    		if(inptext=="TRA BOT" ){
+    			
+    			 boy.style.top=(firstTopNum+41)+"px";
+    		}
+    		if(inptext=="TRA LEF" ){
+    			
+    			 boy.style.left=(firstLeftNum-41)+"px";
+    		}
+    		if(inptext=="TRA RIG" ){
+    			
+    			 boy.style.left=(firstLeftNum+41)+"px";
+    		}
+
+
+            if(inptext=="MOV LEF"){
+                boy.className="left_boy";
+                boy.style.left=(firstLeftNum-41)+"px";
+            }
+            if(inptext=="MOV TOP"){
+                boy.className="top_boy";
+                 boy.style.top=(firstTopNum-41)+"px";
+            }
+            if(inptext=="MOV RIG"){
+                boy.className="right_boy";
+                boy.style.left=(firstLeftNum+41)+"px";
+            }
+            if(inptext=="MOV BOT"){
+                boy.className="bottom_boy";
+                boy.style.top=(firstTopNum+41)+"px";
+            }
+
+            //越界警示
+            if(firstTopNum==0 || firstTopNum==369){
+                alert("越界！");
+                boy.style.top=164+"px";
+                boy.style.left=164+"px";
+                return false;
+            }
+            if(firstLeftNum==0 || firstLeftNum==369){
+                alert("越界！");
+                boy.style.top=164+"px";
+                boy.style.left=164+"px";
+                return false;
+            }
+
+
+
+
+
+
+
+
+
+
+
+    		
+    		
+    		 firstClass=boy.className;  //改变一次位置或者方向后，重置firstClass，方便下次调用时是最新位置
+    		
+    	}
+    </script>
+</html>

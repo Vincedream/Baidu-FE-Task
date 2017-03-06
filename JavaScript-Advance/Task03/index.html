@@ -4,18 +4,46 @@
         <meta charset="utf-8">
     </head>
     <style>
+
+    	form{
+    		position: absolute;
+    		left: 40px;
+    	}
     	#stu{
     		width: 400px;
-    		height: 200px;
-    		background-color: red;
+    		height: 100px;
+    		
     		display: none;
+    		padding-top:40px;
+			padding-left: 50px;
     	}
     	#work{
     		width: 400px;
-    		height: 200px;
-    		background-color: green;
+    		height: 100px;
+
     		display: none;
+    		padding-top:40px;
+			padding-left: 50px;
     	}
+    	.select {
+			font-size: 40px
+    		
+    		height: 60px;
+		  /*Chrome和Firefox里面的边框是不一样的，所以复写了一下*/
+		  border: solid 1px #000;
+
+		  /*很关键：将默认的select选择框样式清除*/
+		  appearance:none;
+		  -moz-appearance:none;
+		  -webkit-appearance:none;
+
+		  /*在选择框的最右侧中间显示小箭头图片*/
+		  background: url("http://ourjs.github.io/static/2015/arrow.png") no-repeat scroll right center transparent;
+
+
+		  /*为下拉小箭头留出一点位置，避免被文字覆盖*/
+		  padding-right: 14px;
+			}
     </style>
     <body>
     	<!-- <input type="radio" id="select" >
@@ -26,14 +54,14 @@
  		</form>
  		<div id="stu">
  			<form name="frm">
- 				<select name="s1" id="" onChange="redirec(document.frm.s1.options.selectedIndex)">
+ 				<select class="select" name="s1" id="" onChange="redirec(document.frm.s1.options.selectedIndex)">
  					<option selected="selected">请选择</option>
  					<option value="1">北京</option>
  					<option value="2">上海</option>
  					<option value="3">广东</option>
  					<option value="4">南昌</option>
  				</select>
- 				<select name="s2" id="">
+ 				<select class="select" name="s2" id="">
  					<option value="请选择">请选择</option>
  				</select>
 
@@ -47,29 +75,30 @@
     <script>
     		var student=document.getElementById('stu');
     		var worker=document.getElementById('work');
+    		//显示在校生页面
     	function f1() {
     		student.style.display="block";
     		worker.style.display="none";
-
-
-
     	}
+    		//显示非在校生页面
     	function f2() {
     		student.style.display="none";
     		worker.style.display="block";
-    		
+ 		}
 
-
-    		
-    	}
+ 				//表单联动
     	function redirec(x) {
 
-    		var selcet1_len=document.frm.s1.options.length;
-    		var select2=new Array(selcet1_len);
+    		var selcet1_len=document.frm.s1.options.length; //获取第一个联动值的数组长度
+    		var select2=new Array(selcet1_len);  //根据第一个联动数组长度简历第二联动的数组
 
-    		for(var i=0;i<selcet1_len;i++){
+    		for(var i=0;i<selcet1_len;i++){   //循环遍历，初始化数组
     			select2[i]=new Array();
     		}
+
+
+
+    		//设置select 与option的值
     		select2[0][0]=new Option("请选择","");
 
     		select2[1][0]=new Option("北京大学","");
@@ -96,9 +125,9 @@
     		select2[4][3]=new Option("江西师范大学","");
     		select2[4][4]=new Option("华东交通大学","");
 
-    		
-    			var temp=document.frm.s2;
-    			for(var j=0;j<select2[x].length;j++){
+
+    			var temp=document.frm.s2;  //获取第二联动的数据
+    			for(var j=0;j<select2[x].length;j++){   //循环遍历设置第二联动的options
     				temp.options[j]=new Option(select2[x][j].text,select2[x][j].value);
     				temp.options[0].selected=true;
     			}

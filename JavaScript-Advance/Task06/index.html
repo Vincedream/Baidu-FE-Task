@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <style>
+    body{
+    	/*position: relative;*/
+    }
+    	#a1{
+    	background-color: pink;
+    	position: fixed;
+    	height: 300px;
+    	width: 500px;
+    	top: 50%;
+    	left:50%;
+		margin-left: -250px;
+		margin-top: -190px;
+		display: none;
+		color: white;
+		line-height: 300px;
+		font-size: 100px;
+		text-align: center;
+	
+    }
+    .b1{
+    	height: 400px;
+    	width: 200px;
+    	background-color: red;
+    	text-align: center;
+    	text-align: center;
+    	margin: 0 auto;
+    }
+    .b2{
+    	height: 400px;
+    	width: 200px;
+    	background-color: blue;
+    	text-align: center;
+    	margin: 0 auto;
+    	line-height: 400px;
+    	font-size: 45px;
+    	color: white;
+    }
+    #wu{
+    	position: fixed;
+    	top: 0px;
+    	left: 0px;
+    	width: 100%;
+    	height: 100%;
+    	display: none;
+    	background-color:rgba(0,0,0,0.3);
+
+    }
+    </style>
+    <body >
+		<div id="wu" onclick="Dis()"></div>
+    	<div id="a1" onmousedown="DIVDown('a1')" >SUCCESS</div>
+    	<div class="b1"></div>
+    	<div class="b2" onclick="Btn()" style="cursor: pointer;">click me</div>
+    	<div class="b1"></div>
+    	<div class="b2"></div>
+		<div class="b1"></div>
+    	<div class="b1"></div>
+    </body>
+    <script>
+
+    	//console.log(event.x);
+    	// document.getElementById(id).style.XXX，无法获取外部样式或者外联样式，因此设置一个函数来获取样式
+    	function getStyle(id,attr) {
+    		if(id.currentStyle){  //IE适用
+    			return id.currentStyle[attr]
+    		}
+    		else{    //其他主流浏览器
+    			return getComputedStyle(id,false)[attr];
+    		}
+    	}
+
+    	box=document.getElementById('a1');
+    	//点击特定区域弹出悬浮框
+    	function Btn() {   		
+    		box.style.display="block";
+    		document.getElementById('wu').style.display="block";	
+    	}
+    	//点击悬浮框外部隐藏悬浮框和雾面层
+    	function Dis() {  			
+    		box.style.display="none";
+    		document.getElementById('wu').style.display="none";
+    	}
+	   	var Obj="none";
+    	var pX;
+		var pY;
+    	document.onmousemove=DIVMove;  //当鼠标移动时触发DIVMove事件
+    	document.onmouseup=DIVUp;   	//当鼠标完成点击时触发事件
+    	function DIVDown(tag) {
+    		 Obj=tag;
+    		 pX=parseInt(getStyle(a1,'left'))-event.x;
+			 pY=parseInt(getStyle(a1,'top'))-event.y;
+    	}
+    	function DIVMove() {  //移动函数
+    		if(Obj!="none"){
+    			box.style.left=pX+event.x+"px";
+    			box.style.top=pY+event.y+"px";
+				console.log(pX+event.x+"px");
+    		}
+    	}
+    	function DIVUp() {  	//当鼠标完成点击时，取消拖拽个体
+    		Obj="none";
+    	}
+    </script>
+</html>

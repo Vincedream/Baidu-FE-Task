@@ -4,48 +4,57 @@
         <meta charset="utf-8">
     </head>
     <style>
-    	#latt {
+    	.latt {
     border-bottom: 1px solid #CCCCCC;
     border-left: 1px solid #CCCCCC;
     position: absolute;
     float: left;
 		}
-		#latt td {
+		.latt td {
     border-right: 1px solid #CCCCCC;
     border-top: 1px solid #CCCCCC;
 	height:40px;
 	width:80px;
 	text-align: center;
 		}
-		#latt tr:first-child{
-	text-align: center;
-	background-color: gray;
-	color: white;
-		}
+		
     </style>
     <body>
-    姓名：<input type="text" id="nameI"><br>	
-	语文成绩：<input type="text" id="chineseI">
-	数学成绩：<input type="text" id="mathI">
-	英语成绩：<input type="text" id="engI">
-	<button onclick="Add()">submit</button>
-
-	<button onclick="Pai(3)">paixu</button>
-	<table id='latt' cellpadding="0" cellspacing="0">
+  
+	<table class='latt' cellpadding="0" cellspacing="0" style="background-color: gray; color: white">
+   <tr>
+   	<td>姓名</td>
+   	<td>语文<img src="pp.png" style="cursor: pointer;" onclick="Pai(1)"></td>
+   	<td>数学<img src="pp.png" style="cursor: pointer;" onclick="Pai(2)"></td>
+   	<td>英语<img src="pp.png" style="cursor: pointer;" onclick="Pai(3)"></td>
+   	<td>总分<img src="pp.png" style="cursor: pointer;" onclick="Pai(4)"></td>
+   </tr>
+   
+     
+</table>`
+	<table class='latt' id='latt' cellpadding="0" cellspacing="0" style="top: 51px;">
    
    
      
 </table>`
+  	<div style="position: absolute; left: 420px;">
+  	姓名：<input type="text" id="nameI"><br>	
+	语文：<input type="text" id="chineseI"><br>
+	数学：<input type="text" id="mathI"><br>
+	英语：<input type="text" id="engI"><br>
+	<button onclick="Add()">submit</button><br>
+
+	
+  	</div>
     </body>
     <script>
-    	var a=[[4,3,145,23,45],["243",234,345,56,56],[4,23,36,23,45],[4,34,745,23,45]];
+    //初始数据 
+    	var a=[['vince',94,95,71,260],["tom",84,75,66,225],["tony",23,36,21,80],["sam",34,45,21,100]];
     
-   
-    	console.log(a);
 		var tab=document.getElementById('latt');
-		function Disp() {
-			
-			tab.innerHTML='';
+		//展示序列函数
+		function Disp() {			
+			tab.innerHTML='';  //初始化内容
     		for(var i=0;i<a.length;i++){
     		var trr=document.createElement('tr'); 
     		tab.appendChild(trr);   		
@@ -58,24 +67,36 @@
     		}
     	}
 		}
-	Disp();
+			Disp();   //展示初始数据
 	
-		function Add () {
-			
+		//添加数据
+		function Add () {			
 			var name=document.getElementById('nameI').value;
 			var chinese=parseInt(document.getElementById('chineseI').value);
 			var math=parseInt(document.getElementById('mathI').value);
 			var english=parseInt(document.getElementById('engI').value);
 			var all=parseInt(chinese+math+english);
-			var num=a.length
-			//console.log(all);
+			var num=a.length;
 			a[num]=[name,chinese,math,english,all];
 			Disp();
 		}	
-		console.log(a[1][3]);
-
+		
+		var yes=true;  //设置一个切换布尔值
 		function Pai (n) {
-			for(var i=0;i<a.length;i++){
+			if(yes==true){  //第一次点击为正序排列
+				for(var i=0;i<a.length;i++){
+				for(var j=0;i+j<a.length-1;j++){
+					if(a[j][n]<a[j+1][n]){
+						var temp=a[j+1];
+						a[j+1]=a[j];
+						a[j]=temp;
+					}
+				}
+			}
+			yes=false;
+			}
+			else{   //第二次点击为倒序排列
+				for(var i=0;i<a.length;i++){
 				for(var j=0;i+j<a.length-1;j++){
 					if(a[j][n]>a[j+1][n]){
 						var temp=a[j+1];
@@ -84,7 +105,9 @@
 					}
 				}
 			}
-			console.log(a[0][1]);
+			yes=true;
+			}
+			//展示排序后的数据
 			Disp();
 		}
     </script>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <style>
+    	#latt {
+    border-bottom: 1px solid #CCCCCC;
+    border-left: 1px solid #CCCCCC;
+    position: absolute;
+    float: left;
+		}
+		#latt td {
+    border-right: 1px solid #CCCCCC;
+    border-top: 1px solid #CCCCCC;
+	height:40px;
+	width:80px;
+	text-align: center;
+		}
+		#latt tr:first-child{
+	text-align: center;
+	background-color: gray;
+	color: white;
+		}
+    </style>
+    <body>
+	<table id='latt' cellpadding="0" cellspacing="0">
+   
+   
+     
+</table>`
+    </body>
+    <script>
+    	var a=[['姓名','语文','数学','英语','总分'],[4,3,45,23,45],["243",234,345,56,56]];
+    
+   
+    	console.log(a.length);
+		var tab=document.getElementById('latt');
+		function Disp() {
+			
+			tab.innerHTML='';
+    		for(var i=0;i<a.length;i++){
+    		var trr=document.createElement('tr'); 
+    		tab.appendChild(trr);   		
+    		for(var j=0;j<a[0].length;j++)  		
+    		{
+    		var tdd=document.createElement('td');
+    		trr.appendChild(tdd);
+    		var trrT=document.createTextNode(a[i][j]);
+    		tdd.appendChild(trrT);
+    		}
+    	}
+		}
+	Disp();
+	var m=3;
+	function aaa() {
+		a[m]=[32,23,23,34,24];
+		m++;
+	}
+		aaa();
+		aaa();
+		aaa();
+		aaa();
+
+		Disp();
+		console.log(a.length);
+    </script>
+</html>
